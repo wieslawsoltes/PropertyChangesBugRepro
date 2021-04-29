@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="PropertyChangesBugRepro.MainWindow"
+        xmlns:local="clr-namespace:PropertyChangesBugRepro"
+        Title="PropertyChangesBugRepro">
+    <Panel>
+        <Panel.Styles>
+            <Style Selector="local|CustomButton">
+                <Setter Property="Template">
+                    <ControlTemplate>
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          Padding="{TemplateBinding Padding}"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </ControlTemplate>
+                </Setter>
+            </Style>
+            <Style Selector="local|CustomButton">
+                <Setter Property="IndicatorOrientation" Value="Horizontal"/>
+                <Setter Property="CustomProperty" Value="False"/>
+                <Setter Property="Foreground" Value="Blue" />
+            </Style>
+            <Style Selector="local|CustomButton[CustomProperty=True]">
+                <Setter Property="Foreground" Value="Green" />
+            </Style>
+            <Style Selector="local|CustomButton[CustomProperty=False]">
+                <Setter Property="Foreground" Value="Red" />
+            </Style>
+            <Style Selector="local|CustomButton:horizontal">
+                <Setter Property="Background" Value="Yellow" />
+            </Style>
+            <Style Selector="local|CustomButton:vertical">
+                <Setter Property="Background" Value="Black" />
+            </Style>
+        </Panel.Styles>
+        <local:CustomButton Name="CustomButton" Content="Text" Width="100" Height="50"/>
+    </Panel>
+</Window>
