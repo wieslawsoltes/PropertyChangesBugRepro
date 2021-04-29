@@ -7,6 +7,15 @@ namespace PropertyChangesBugRepro
 {
     public class MainWindow : Window
     {
+        public static readonly StyledProperty<bool> OtherPropertyProperty = 
+            AvaloniaProperty.Register<MainWindow, bool>(nameof(OtherProperty), true);
+        
+        public bool OtherProperty
+        {
+            get => GetValue(OtherPropertyProperty);
+            set => SetValue(OtherPropertyProperty, value);
+        }
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +36,8 @@ namespace PropertyChangesBugRepro
                     Console.WriteLine($"IndicatorOrientationProperty {args.NewValue}");
                 }
             };
+
+            DataContext = this;
         }
 
         private void InitializeComponent()

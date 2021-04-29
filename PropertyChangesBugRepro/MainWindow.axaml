@@ -26,7 +26,7 @@
             </Style>
             <Style Selector="local|CustomButton">
                 <Setter Property="IndicatorOrientation" Value="Horizontal"/>
-                <Setter Property="CustomProperty" Value="False"/>
+                <Setter Property="CustomProperty" Value="{Binding OtherProperty}"/>
                 <Setter Property="Foreground" Value="Blue" />
             </Style>
             <Style Selector="local|CustomButton[CustomProperty=True]">
